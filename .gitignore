@@ -43,4 +43,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Not push api keys to github
 src/environments/firebase\.ts
