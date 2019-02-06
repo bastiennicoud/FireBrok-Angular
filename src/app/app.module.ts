@@ -15,10 +15,18 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HomePageComponent } from './home-page/home-page.component';
+import { NavBarComponent } from './dashboard/nav-bar/nav-bar.component';
+import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomePageComponent,
+    NavBarComponent,
+    DashboardHomeComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
