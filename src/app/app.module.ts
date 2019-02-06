@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LayoutModule } from '@angular/cdk/layout';
+
+// Material framework
 import {
   MatGridListModule,
   MatCardModule,
@@ -12,22 +16,19 @@ import {
   MatToolbarModule
 } from '@angular/material';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { HomePageComponent } from './home-page/home-page.component';
-import { NavBarComponent } from './dashboard/nav-bar/nav-bar.component';
-import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomePageComponent,
-    NavBarComponent,
-    DashboardHomeComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
