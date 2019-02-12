@@ -23,12 +23,16 @@
     </ul>
   </nz-sider>
   <nz-layout style="height: 100vh">
-    <nz-header style="padding:0;">
-      <ul nz-menu [nzMode]="'horizontal'" style="line-height: 64px;">
+    <nz-header style="padding:0; background-color: #FFF" nz-row nzType="flex" nzJustify="space-between">
+      <ul nz-col nz-menu [nzMode]="'horizontal'" style="line-height: 62px;">
         <li nz-menu-item>nav 1</li>
         <li nz-menu-item>nav 2</li>
         <li nz-menu-item>nav 3</li>
       </ul>
+      <button nz-col nz-button nzType="danger" style="margin: 16px">
+        <i nz-icon type="logout"></i>
+        Log out
+      </button>
     </nz-header>
     <nz-content style="margin:16px 16px;">
       <div style="padding:24px; background: #fff;">
