@@ -23,7 +23,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginFormComponent } from './auth/login-form/login-form.component';
 import { RegisterFormComponent } from './auth/register-form/register-form.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestore,
+    AngularFirestoreModule,
     AngularFireAuthModule,
     AppRoutingModule,
     BrowserAnimationsModule,

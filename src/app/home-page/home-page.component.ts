@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -8,7 +9,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(public firestore: AngularFirestore) { }
+  automatons: Observable<any>;
+
+  constructor(public firestore: AngularFirestore) {
+    this.automatons = firestore.collection('automatons').valueChanges();
+  }
 
   ngOnInit() {
   }
