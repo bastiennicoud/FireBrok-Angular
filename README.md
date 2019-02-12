@@ -1,27 +1,27 @@
-# FireBrock-Angular
+# FireBrokAngular
 
-> Dashboard app developed during the PRW3 module with [Angular](https://angular.io)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
 
-Docs available in the [docs folder](./docs).
+## Development server
 
-## Installation for dev
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Prerequisites :
-* [node.js](https://nodejs.org/en/)
+## Code scaffolding
 
-```sh
-# Install angular cli tools
-npm install -g @angular/cli
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-# Clone the repo
-git clone git@github.com:bastiennicoud/PRW3-dashboard.git
+## Build
 
-# Move into the folder
-cd PRW3-dashboard
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-# Install the dependencies
-npm i
+## Running unit tests
 
-# Launch the dev server
-ng serve
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

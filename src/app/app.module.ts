@@ -1,36 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgZorroAntdModule, NZ_I18N, en_GB } from 'ng-zorro-antd';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
 
-// Firebase
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { LoginFormComponent } from './auth/login-form/login-form.component';
-import { RegisterFormComponent } from './auth/register-form/register-form.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginFormComponent,
-    RegisterFormComponent,
-    HomePageComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
     AppRoutingModule,
+    NgZorroAntdModule,
+    FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [
-    AppComponent
-  ]
+  providers: [{ provide: NZ_I18N, useValue: en_GB }],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
