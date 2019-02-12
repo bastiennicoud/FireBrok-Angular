@@ -1,4 +1,4 @@
-# PRW3-dashboard
+# FireBrock-Angular
 
 > Dashboard app developed during the PRW3 module with [Angular](https://angular.io)
 
