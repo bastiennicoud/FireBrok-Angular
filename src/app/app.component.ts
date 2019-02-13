@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   isCollapsed = false;
   isReverseArrow = false;
-  width = 200;
+  width = 240;
+
+  constructor(private message: NzMessageService) {}
+  submitForm() {
+    this.message.success('Youpii bravo !');
+  }
 }
