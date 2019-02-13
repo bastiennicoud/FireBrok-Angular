@@ -1,21 +1,22 @@
 <nz-layout style="height: 100vh;">
   <nz-header nz-row nzType="flex" nzJustify="space-between">
-    <img class="home-logo" nz-col src="../../../assets/logo_text.svg" alt="FireBrok">
+    <a routerLink="">
+      <img class="home-logo" nz-col src="../../../../assets/logo_text.svg" alt="FireBrok">
+    </a>
     <div>
-      <button nz-col nz-button class="menu-item">
-        <i nz-icon type="logout"></i>
+      <button routerLink="/sign-in" nz-col nz-button class="menu-item">
+        <i nz-icon type="plus-circle"></i>
         Sign in
       </button>
-      <button nz-col nz-button nzType="primary" class="menu-item">
-        <i nz-icon type="logout"></i>
+      <button routerLink="/log-in" nz-col nz-button nzType="primary" class="menu-item">
+        <i nz-icon type="user"></i>
         Log in
       </button>
     </div>
   </nz-header>
   <nz-content style="padding: 50px;">
     <div style="background:#fff; padding: 24px;">
-      <h1>Broker</h1>
-      <p>Une jolie page d'accueil</p>
+      <router-outlet></router-outlet>
     </div>
   </nz-content>
   <nz-footer style="text-align: center;">FireBrok-Angular - <a href="https://github.com/bastiennicoud/FireBrok-Angular">github</a></nz-footer>

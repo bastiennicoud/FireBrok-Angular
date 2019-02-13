@@ -9,18 +9,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { WelcomePageComponent } from './views/welcome-page/welcome-page.component';
+
+// Components
+import { HomeLayoutComponent } from './views/home/home-layout/home-layout.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
+import { LogInFormComponent } from './components/auth/log-in-form/log-in-form.component';
+import { HomePageComponent } from './views/home/home-page/home-page.component';
+import { LogInPageComponent } from './views/home/log-in-page/log-in-page.component';
+import { SignInPageComponent } from './views/home/sign-in-page/sign-in-page.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomePageComponent,
+    HomeLayoutComponent,
     DashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LogInFormComponent,
+    HomePageComponent,
+    LogInPageComponent,
+    SignInPageComponent
   ],
   imports: [
     BrowserModule,
