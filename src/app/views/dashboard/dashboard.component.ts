@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  isCollapsed = false;
+  isReverseArrow = false;
+  width = 240;
+
+  constructor(private message: NzMessageService) {}
+  submitForm() {
+    this.message.success('Youpii bravo !');
+  }
 
   ngOnInit() {
   }
