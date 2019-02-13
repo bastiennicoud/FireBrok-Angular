@@ -9,12 +9,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { WelcomePageComponent } from './views/welcome-page/welcome-page.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomePageComponent,
+    DashboardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
