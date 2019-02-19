@@ -23,6 +23,8 @@ import { SignInPageComponent } from './views/home/sign-in-page/sign-in-page.comp
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 
 registerLocaleData(en);
 
@@ -46,7 +48,9 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireFunctionsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{ provide: NZ_I18N, useValue: en_GB }],
   bootstrap: [AppComponent]
