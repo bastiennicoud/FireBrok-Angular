@@ -19,6 +19,11 @@ import { HomePageComponent } from './views/home/home-page/home-page.component';
 import { LogInPageComponent } from './views/home/log-in-page/log-in-page.component';
 import { SignInPageComponent } from './views/home/sign-in-page/sign-in-page.component';
 
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 registerLocaleData(en);
 
 @NgModule({
@@ -39,7 +44,9 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_GB }],
   bootstrap: [AppComponent]

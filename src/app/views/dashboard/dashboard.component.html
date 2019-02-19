@@ -34,6 +34,12 @@
       </button>
     </nz-header>
     <nz-content>
+      <!-- Test retrive firebase collection -->
+      <ul>
+        <li class="text" *ngFor="let item of topic | async">
+          {{item.id}}
+        </li>
+      </ul>
       <div style="padding:24px; background: #fff;">
         <div nz-row>
           <div nz-col>

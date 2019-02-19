@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +14,16 @@ export class DashboardComponent implements OnInit {
   isReverseArrow = false;
   width = 240;
 
-  constructor(private message: NzMessageService) {}
+  topic: Observable<any>;
+
+  constructor(
+    private message: NzMessageService,
+    private firestore: AngularFirestore
+  ) {
+    this.topic = firestore
+      .collection('automatons/raspberry/topics')
+      .valueChanges();
+  }
   submitForm() {
     this.message.success('Youpii bravo !');
   }
