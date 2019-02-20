@@ -33,7 +33,11 @@ export class DashboardComponent implements OnInit {
   submitForm() {
     this.message.success('Creation d\'un automate');
     let datas = this.newAutomaton({ name: 'testAutomaton' });
-    datas.valueChanges();
+    datas.subscribe(r => {
+      console.log(r);
+    }, e => {
+      console.error('Function error !', e);
+    });
   }
 
   ngOnInit() {

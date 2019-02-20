@@ -7,12 +7,11 @@
       <li nz-submenu>
         <span title>
           <i nz-icon type="user"></i>
-          <span class="nav-text">Mes automates</span>
+          <span class="nav-text">Automates</span>
         </span>
         <ul>
-          <li nz-menu-item>Tom</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
+          <li nz-menu-item><a routerLink="/dashboard/automatons">Tous</a></li>
+          <li nz-menu-item><a routerLink="/dashboard/automatons/create">Enregistrer un automate</a></li>
         </ul>
       </li>
       <li nz-submenu>
@@ -27,41 +26,14 @@
   </nz-sider>
   <nz-layout style="height: 100vh">
     <nz-header class="custom-header" nz-row nzType="flex" nzJustify="space-between">
-      <h1 style="color: #d9d9d9">Mes automates</h1>
+      <h1 style="color: #d9d9d9">Dashboard</h1>
       <button nz-col nz-button nzType="danger" class="menu-item">
         <i nz-icon type="logout"></i>
         Log out
       </button>
     </nz-header>
     <nz-content>
-      <!-- Test retrive firebase collection -->
-      <ul>
-        <li class="text" *ngFor="let item of topic | async">
-          {{item.id}}
-        </li>
-      </ul>
-      <div style="padding:24px; background: #fff;">
-        <div nz-row>
-          <div nz-col>
-            <h2>Créez un nouvel automate</h2>
-          </div>
-        </div>
-        <form nz-form (ngSubmit)="submitForm()">
-          <nz-form-item>
-            <nz-form-label nzFor="email">
-              E-mail
-            </nz-form-label>
-            <nz-form-control>
-              <input nz-input type="email" name="email">
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <nz-form-control>
-              <button nz-button nzType="primary">Envoyer</button>
-            </nz-form-control>
-          </nz-form-item>
-        </form>
-      </div>
+      <router-outlet></router-outlet>
     </nz-content>
     <nz-footer style="text-align: center;">
       FireBroK-Angular - Angular front-end for FireBrok platform - 2019 - Bastien Nicoud<br>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in-form',
@@ -16,7 +17,9 @@ export class LogInFormComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -25,6 +28,10 @@ export class LogInFormComponent implements OnInit {
       password: [ null, [ Validators.required ] ],
       remember: [ true ]
     });
+  }
+
+  logIn (): void {
+    this.router.navigate(['/dashboard']);
   }
 
 }

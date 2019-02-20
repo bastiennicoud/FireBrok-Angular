@@ -10,21 +10,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 
-// Components
-import { HomeLayoutComponent } from './views/home/home-layout/home-layout.component';
-import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { NotFoundComponent } from './views/not-found/not-found.component';
-import { LogInFormComponent } from './components/auth/log-in-form/log-in-form.component';
-import { HomePageComponent } from './views/home/home-page/home-page.component';
-import { LogInPageComponent } from './views/home/log-in-page/log-in-page.component';
-import { SignInPageComponent } from './views/home/sign-in-page/sign-in-page.component';
-
 // Firebase
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/functions';
+
+// Components
+import { HomeLayoutComponent } from './views/home/home-layout/home-layout.component';
+import { DashboardComponent } from './views/dashboard/dashboard/dashboard.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
+import { LogInFormComponent } from './components/auth/log-in-form/log-in-form.component';
+import { HomePageComponent } from './views/home/home-page/home-page.component';
+import { LogInPageComponent } from './views/home/log-in-page/log-in-page.component';
+import { SignInPageComponent } from './views/home/sign-in-page/sign-in-page.component';
+import { DashboardHomeComponent } from './views/dashboard/dashboard-home/dashboard-home.component';
+import { AutomatonsComponent } from './views/dashboard/automatons/automatons/automatons.component';
+import { AutomatonsHomeComponent } from './views/dashboard/automatons/automatons-home/automatons-home.component';
+import { AutomatonsCreateComponent } from './views/dashboard/automatons/automatons-create/automatons-create.component';
 
 registerLocaleData(en);
 
@@ -37,7 +41,11 @@ registerLocaleData(en);
     LogInFormComponent,
     HomePageComponent,
     LogInPageComponent,
-    SignInPageComponent
+    SignInPageComponent,
+    DashboardHomeComponent,
+    AutomatonsComponent,
+    AutomatonsHomeComponent,
+    AutomatonsCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +60,10 @@ registerLocaleData(en);
     AngularFireFunctionsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_GB }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_GB },
+    { provide: FunctionsRegionToken, useValue: 'europe-west1' }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
