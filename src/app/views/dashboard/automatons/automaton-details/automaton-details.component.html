@@ -12,5 +12,25 @@
   </div>
   <div nz-col nzSpan="14">
     <h2>Topics de l'automate</h2>
+    <nz-list
+      [nzDataSource]="topics$ | async"
+      [nzRenderItem]="a"
+      [nzItemLayout]="'horizontal'"
+      nzBordered>
+      <ng-template #a let-item>
+        <nz-list-item>
+          <nz-list-item-meta
+            [nzTitle]="nzTitle"
+            [nzDescription]="'Dérnière données ' + item.updated_at.toDate().toLocaleString()">
+            <ng-template #nzTitle>
+              <a [routerLink]="['/dashboard/automatons']">
+                <i nz-icon type="tag" theme="twotone"></i>
+                &nbsp;<span>{{item.name}}</span>
+              </a>
+            </ng-template>
+          </nz-list-item-meta>
+        </nz-list-item>
+      </ng-template>
+    </nz-list>
   </div>
 </div>

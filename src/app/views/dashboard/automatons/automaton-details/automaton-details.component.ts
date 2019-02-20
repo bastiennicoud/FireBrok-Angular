@@ -12,6 +12,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class AutomatonDetailsComponent implements OnInit {
 
   automaton$: Observable<any>;
+  topics$: Observable<any>;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +25,12 @@ export class AutomatonDetailsComponent implements OnInit {
     this.automaton$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
         return this.firestore.doc(`/automatons/${params.get('id')}`).valueChanges();
+      })
+    );
+    // Map automaton topics
+    this.topics$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => {
+        return this.firestore.collection(`/automatons/${params.get('id')}/topics`).valueChanges();
       })
     );
   }
