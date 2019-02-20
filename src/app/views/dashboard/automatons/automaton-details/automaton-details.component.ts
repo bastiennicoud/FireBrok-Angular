@@ -23,10 +23,10 @@ export class AutomatonDetailsComponent implements OnInit {
     console.log('ngOnInit()');
     this.automaton$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
+        console.log('ParamMap');
         console.log(params);
         return this.firestore.doc(`/automatons/${params.get('id')}`).valueChanges();
-      }
-      )
+      })
     );
   }
 
