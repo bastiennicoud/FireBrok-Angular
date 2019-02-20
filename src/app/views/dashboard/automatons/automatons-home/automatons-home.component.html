@@ -6,7 +6,7 @@
     <h2>Automates actuellement connectés</h2>
     <ul>
       <nz-list
-        [nzDataSource]="automatons | async"
+        [nzDataSource]="automatons$ | async"
         [nzRenderItem]="a"
         [nzItemLayout]="'horizontal'">
         <ng-template #a let-item>
@@ -15,7 +15,7 @@
               [nzTitle]="nzTitle"
               [nzDescription]="'Dérnière données ' + item.updated_at.toDate().toLocaleString()">
               <ng-template #nzTitle>
-                <a href="https://ng.ant.design">
+                <a [routerLink]="['/dashboard/automatons', item.id]">
                   <i nz-icon type="fire" theme="twotone" [twoToneColor]="'#52c41a'"></i>
                   &nbsp;<span>{{item.name}}</span>
                 </a>
