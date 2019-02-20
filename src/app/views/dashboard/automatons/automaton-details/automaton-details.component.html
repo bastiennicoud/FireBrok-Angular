@@ -1,3 +1,16 @@
-<p>
-  {{ (automaton$ | async)?.name }}
-</p>
+<div nz-row nzGutter="16">
+  <div nz-col nzSpan="10">
+    <h2>Informations :</h2>
+    <h3>Nom : {{ (automaton$ | async)?.name }}</h3>
+    <P>{{ (automaton$ | async)?.description }}</P>
+    <nz-alert
+      nzType="info"
+      nzMessage="Connectez votre automate :"
+      nzDescription="Utilisez les identifiants de l'automate pour la connexion MQTT."
+      nzShowIcon>
+    </nz-alert>
+  </div>
+  <div nz-col nzSpan="14">
+    <h2>Topics de l'automate</h2>
+  </div>
+</div>
