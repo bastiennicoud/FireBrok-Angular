@@ -1,10 +1,9 @@
+<div nz-row>
+  <div nz-col nzOffset="6" nzXs="24">
+    <h2>Créer un nouvel automate</h2>
+  </div>
+</div>
 <form nz-form [formGroup]="form" (ngSubmit)="submitForm()">
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24"></nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24">
-      <h2>Créer un nouvel automate</h2>
-    </nz-form-control>
-  </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name">Nom</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzHasFeedback>
