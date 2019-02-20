@@ -10,6 +10,7 @@ import { DashboardHomeComponent } from './views/dashboard/dashboard-home/dashboa
 import { AutomatonsComponent } from './views/dashboard/automatons/automatons/automatons.component';
 import { AutomatonsHomeComponent } from './views/dashboard/automatons/automatons-home/automatons-home.component';
 import { AutomatonsCreateComponent } from './views/dashboard/automatons/automatons-create/automatons-create.component';
+import { AutomatonDetailsComponent } from './views/dashboard/automatons/automaton-details/automaton-details.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
           {
             path: 'create',
             component: AutomatonsCreateComponent
+          },
+          {
+            path: ':id',
+            component: AutomatonDetailsComponent
           }
         ]
       }
