@@ -45,6 +45,7 @@ export class AutomatonsCreateComponent implements OnInit {
     this.createAutomaton(this.form.getRawValue()).subscribe(data => {
       console.log(data);
       this.loading = false;
+      this.message.success('Automate correctement créé !');
       this.router.navigate([`/dashboard/automatons`, data.automatonId]);
     }, err => {
       console.error(err);
