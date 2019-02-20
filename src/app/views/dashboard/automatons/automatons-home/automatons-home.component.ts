@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-automatons-home',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AutomatonsHomeComponent implements OnInit {
 
-  constructor() { }
+  loading = false;
+  automatons: Observable<any>;
+
+  constructor(private firestore: AngularFirestore) {
+    this.automatons = firestore.collection(
+      'automatons',
+      ref => ref.where('connected', '==', false)
+    ).valueChanges();
+  }
 
   ngOnInit() {
   }

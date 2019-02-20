@@ -1,3 +1,29 @@
-<p>
-  automatons-home works!
-</p>
+<div nz-row>
+  <div nz-col nzSpan="16">
+    toto
+  </div>
+  <div nz-col nzSpan="8">
+    <h2>Automates actuellement connectés</h2>
+    <ul>
+      <nz-list
+        [nzDataSource]="automatons | async"
+        [nzRenderItem]="a"
+        [nzItemLayout]="'horizontal'">
+        <ng-template #a let-item>
+          <nz-list-item>
+            <nz-list-item-meta
+              [nzTitle]="nzTitle"
+              [nzDescription]="'Dérnière données ' + item.updated_at.toDate().toLocaleString()">
+              <ng-template #nzTitle>
+                <a href="https://ng.ant.design">
+                  <i nz-icon type="fire" theme="twotone" [twoToneColor]="'#52c41a'"></i>
+                  &nbsp;<span>{{item.name}}</span>
+                </a>
+              </ng-template>
+            </nz-list-item-meta>
+          </nz-list-item>
+        </ng-template>
+      </nz-list>
+    </ul>
+  </div>
+</div>

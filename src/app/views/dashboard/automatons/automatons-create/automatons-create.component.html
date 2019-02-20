@@ -1,3 +1,29 @@
-<p>
-  automatons-create works!
-</p>
+<form nz-form [formGroup]="form" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24"></nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <h2>Créer un nouvel automate</h2>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name">Nom</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzHasFeedback>
+      <input nz-input formControlName="name" id="name" placeholder="Nom de votre automate">
+      <nz-form-explain *ngIf="form.get('name').dirty && form.get('name').errors">The input is not valid E-mail!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description">E-mail</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <textarea nz-input formControlName="description" id="description" rows="4" placeholder="Description de votre automate"></textarea>
+      <nz-form-explain *ngIf="form.get('description').dirty && form.get('description').errors">The input is not valid E-mail!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row style="margin-bottom:8px;">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary" [disabled]="!form.valid">Créer</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+{{form.status}}
