@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { switchMap} from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 
@@ -20,11 +20,9 @@ export class AutomatonDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('ngOnInit()');
+    // map the route parameters to get corresponding document
     this.automaton$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
-        console.log('ParamMap');
-        console.log(params);
         return this.firestore.doc(`/automatons/${params.get('id')}`).valueChanges();
       })
     );

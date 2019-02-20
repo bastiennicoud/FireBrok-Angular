@@ -25,7 +25,6 @@ export class AutomatonsHomeComponent implements OnInit {
         };
       }))
     );
-    this.automatons$.subscribe(d => console.log(d));
   }
 
   ngOnInit() {
