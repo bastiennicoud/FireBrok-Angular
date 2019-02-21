@@ -32,6 +32,7 @@ import { AutomatonsCreateComponent } from './views/dashboard/automatons/automato
 import { AutomatonDetailsComponent } from './views/dashboard/automatons/automaton-details/automaton-details.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 registerLocaleData(en);
 
@@ -62,6 +63,7 @@ registerLocaleData(en);
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireFunctionsModule,
+    AngularFireAuthModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

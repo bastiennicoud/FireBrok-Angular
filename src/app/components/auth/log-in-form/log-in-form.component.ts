@@ -1,5 +1,7 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,30 +10,43 @@ import { Router } from '@angular/router';
   styleUrls: ['./log-in-form.component.less']
 })
 export class LogInFormComponent implements OnInit {
-  validateForm: FormGroup;
 
-  submitForm(): void {
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[ i ].markAsDirty();
-      this.validateForm.controls[ i ].updateValueAndValidity();
-    }
-  }
+  loading: boolean;
+  form: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private router: Router) {
-  }
+    private router: Router,
+    private auth: AuthService,
+    private message: NzMessageService,
+  ) { }
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      userName: [ null, [ Validators.required, Validators.email ] ],
-      password: [ null, [ Validators.required ] ],
-      remember: [ true ]
+    this.form = this.fb.group({
+      userName: [ null, [
+        Validators.required,
+        Validators.email
+      ]],
+      password: [ null, [
+        Validators.required
+      ]]
     });
   }
 
-  logIn (): void {
-    this.router.navigate(['/dashboard']);
+  logIn(): void {
+    this.loading = true;
+    this.auth.signIn(
+      this.form.getRawValue().userName,
+      this.form.getRawValue().password
+    ).then(() => {
+      this.message.success('Connexion réussie, bienvenue !');
+      this.router.navigate(['/dashboard']);
+    }).catch(() => {
+      this.message.error('Identifiants incorects, verifiez vos informations');
+      this.form.reset();
+    }).finally(() => {
+      this.loading = false;
+    });
   }
 
 }
