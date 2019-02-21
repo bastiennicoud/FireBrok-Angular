@@ -33,6 +33,7 @@ import { AutomatonDetailsComponent } from './views/dashboard/automatons/automato
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { RedirectLoggedUserGuard } from './guards/redirect-logged-user.guard';
 
 registerLocaleData(en);
 
@@ -70,7 +71,8 @@ registerLocaleData(en);
     { provide: NZ_I18N, useValue: en_GB },
     { provide: FunctionsRegionToken, useValue: 'europe-west1' },
     AuthService,
-    AuthGuard
+    AuthGuard,
+    RedirectLoggedUserGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -12,6 +12,7 @@ import { AutomatonsHomeComponent } from './views/dashboard/automatons/automatons
 import { AutomatonsCreateComponent } from './views/dashboard/automatons/automatons-create/automatons-create.component';
 import { AutomatonDetailsComponent } from './views/dashboard/automatons/automaton-details/automaton-details.component';
 import { AuthGuard } from './guards/auth.guard';
+import { RedirectLoggedUserGuard } from './guards/redirect-logged-user.guard';
 
 const routes: Routes = [
   {
@@ -24,11 +25,13 @@ const routes: Routes = [
       },
       {
         path: 'log-in',
-        component: LogInPageComponent
+        component: LogInPageComponent,
+        canActivate: [RedirectLoggedUserGuard]
       },
       {
         path: 'sign-in',
-        component: SignInPageComponent
+        component: SignInPageComponent,
+        canActivate: [RedirectLoggedUserGuard]
       }
     ]
   },

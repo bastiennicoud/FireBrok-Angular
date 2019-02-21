@@ -19,6 +19,7 @@ export class RedirectLoggedUserGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.auth.authenticated) {
+      console.log('user authenticated');
       this.router.navigate(['/dashboard']);
       return false;
     }
@@ -28,8 +29,9 @@ export class RedirectLoggedUserGuard implements CanActivate {
       map(user => !!user),
       take(1),
       tap(allowed => {
+        console.log('From redirect pipe' + allowed);
         if (allowed) {
-          this.router.navigate(['/log-in']);
+          this.router.navigate(['/dashboard']);
         }
       })
     );
