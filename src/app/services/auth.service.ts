@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { User } from 'firebase';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd';
 
 /**
  * This service regroups all firebase authentication logic
@@ -20,7 +21,8 @@ export class AuthService {
 
   constructor(
     private afAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private message: NzMessageService
   ) {
     // Get user observable
     this.user = afAuth.user;
@@ -48,27 +50,30 @@ export class AuthService {
    * Sign up new user
    */
   signUp(email: string, password: string) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(() => this.updateUserDatas())
-      .catch(error => console.error(error));
+    return this.afAuth.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => this.updateUserDatas() );
   }
 
   /**
    * Sign in user
    */
   signIn(email: string, password: string) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(() => this.updateUserDatas())
-      .catch(error => console.error(error));
+    return this.afAuth.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => this.updateUserDatas() );
   }
 
   /**
    * Sign out user and redirect to homepage
    */
   signOut(): void {
-    this.afAuth.auth.signOut()
-      .then(() => this.router.navigate(['/']))
-      .catch(error => console.error(error));
+    this.afAuth.auth
+      .signOut()
+      .then(() => {
+        this.message.info('Vous avez correctement été déconnecté.');
+        this.router.navigate(['/']);
+      });
   }
 
   /**
