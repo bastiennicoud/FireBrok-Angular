@@ -7,26 +7,28 @@ import { map, take, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class RedirectLoggedUserGuard implements CanActivate {
 
   constructor(
     private auth: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.auth.authenticated) { return true; }
+    if (this.auth.authenticated) {
+      this.router.navigate(['/dashboard']);
+      return false;
+    }
 
-    // Unauthenticated
+    // Wait for first load situations
     return this.auth.authenticatedUser.pipe(
       map(user => !!user),
       take(1),
       tap(allowed => {
-        if (!allowed) {
-          console.warn('Access denied, auth required.');
+        if (allowed) {
           this.router.navigate(['/log-in']);
         }
       })

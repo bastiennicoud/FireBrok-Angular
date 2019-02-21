@@ -27,7 +27,7 @@ export class AuthService {
     // Get user observable
     this.user = afAuth.user;
     // Register an observer on the auth state
-    this.afAuth.authState.subscribe(auth => {
+    afAuth.authState.subscribe(auth => {
       this.authState = auth;
     });
   }
