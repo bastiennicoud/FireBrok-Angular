@@ -30,6 +30,8 @@ import { AutomatonsComponent } from './views/dashboard/automatons/automatons/aut
 import { AutomatonsHomeComponent } from './views/dashboard/automatons/automatons-home/automatons-home.component';
 import { AutomatonsCreateComponent } from './views/dashboard/automatons/automatons-create/automatons-create.component';
 import { AutomatonDetailsComponent } from './views/dashboard/automatons/automaton-details/automaton-details.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 registerLocaleData(en);
 
@@ -64,8 +66,10 @@ registerLocaleData(en);
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_GB },
-    { provide: FunctionsRegionToken, useValue: 'europe-west1' }
-    ],
+    { provide: FunctionsRegionToken, useValue: 'europe-west1' },
+    AuthService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

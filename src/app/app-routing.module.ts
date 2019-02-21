@@ -11,6 +11,7 @@ import { AutomatonsComponent } from './views/dashboard/automatons/automatons/aut
 import { AutomatonsHomeComponent } from './views/dashboard/automatons/automatons-home/automatons-home.component';
 import { AutomatonsCreateComponent } from './views/dashboard/automatons/automatons-create/automatons-create.component';
 import { AutomatonDetailsComponent } from './views/dashboard/automatons/automaton-details/automaton-details.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
