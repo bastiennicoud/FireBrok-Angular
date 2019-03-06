@@ -26,12 +26,12 @@ const routes: Routes = [
       {
         path: 'log-in',
         component: LogInPageComponent,
-        canActivate: [RedirectLoggedUserGuard]
+        // canActivate: [RedirectLoggedUserGuard]
       },
       {
         path: 'sign-in',
         component: SignInPageComponent,
-        canActivate: [RedirectLoggedUserGuard]
+        // canActivate: [RedirectLoggedUserGuard]
       }
     ]
   },

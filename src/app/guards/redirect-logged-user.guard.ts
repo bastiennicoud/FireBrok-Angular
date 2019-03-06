@@ -30,7 +30,7 @@ export class RedirectLoggedUserGuard implements CanActivate {
       map(user => !!user),
       take(1),
       tap(allowed => {
-        console.log('From redirect pipe' + allowed);
+        console.log('From redirect pipe ' + allowed);
         if (allowed) {
           console.log('Authenticated, redirect to dashboard');
           this.router.navigate(['/dashboard']);

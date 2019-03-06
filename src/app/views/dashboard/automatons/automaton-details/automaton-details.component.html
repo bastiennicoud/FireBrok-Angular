@@ -11,7 +11,17 @@
     </nz-alert>
   </div>
   <div nz-col nzSpan="14">
-    <h2>Topics de l'automate</h2>
+    <div nz-row nzType="flex" nzJustify="space-between">
+      <div nz-col>
+        <h2>Topics de l'automate</h2>
+      </div>
+      <div nz-col>
+        <button nz-button nzType="primary">
+          <i nz-icon type="plus-circle"></i>
+          Ajouter
+        </button>
+      </div>
+    </div>
     <nz-list
       [nzDataSource]="topics$ | async"
       [nzRenderItem]="a"
