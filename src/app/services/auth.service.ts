@@ -77,7 +77,7 @@ export class AuthService {
   }
 
   /**
-   * Update user datas
+   * Update user data's
    */
   private updateUserDatas(): void {
     // Update user firestore representation

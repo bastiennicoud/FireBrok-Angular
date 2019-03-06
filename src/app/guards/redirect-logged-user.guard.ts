@@ -24,6 +24,7 @@ export class RedirectLoggedUserGuard implements CanActivate {
       return false;
     }
 
+    // TODO not working for now, routing not performed when user not logged
     // Wait for first load situations
     return this.auth.authenticatedUser.pipe(
       map(user => !!user),
@@ -31,8 +32,11 @@ export class RedirectLoggedUserGuard implements CanActivate {
       tap(allowed => {
         console.log('From redirect pipe' + allowed);
         if (allowed) {
+          console.log('Authenticated, redirect to dashboard');
           this.router.navigate(['/dashboard']);
+          return false;
         }
+        return true;
       })
     );
   }
