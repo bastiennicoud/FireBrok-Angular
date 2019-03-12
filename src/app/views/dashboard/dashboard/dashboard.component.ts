@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   width = 240;
 
   constructor(
-    private auth: AuthService
+    public auth: AuthService
   ) { }
 
   ngOnInit() { }

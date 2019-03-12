@@ -7,18 +7,20 @@
       <li nz-submenu>
         <span title>
           <i nz-icon type="user"></i>
+          <span class="nav-text">{{ (auth.authenticatedUser | async)?.email }}</span>
+        </span>
+        <ul>
+          <li nz-menu-item>Mon compte</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title>
+          <i nz-icon type="cluster"></i>
           <span class="nav-text">Automates</span>
         </span>
         <ul>
           <li nz-menu-item><a routerLink="/dashboard/automatons">Tous</a></li>
           <li nz-menu-item><a routerLink="/dashboard/automatons/create">Enregistrer un automate</a></li>
-        </ul>
-      </li>
-      <li nz-submenu>
-        <span title><i nz-icon type="team"></i><span class="nav-text">Team</span></span>
-        <ul>
-          <li nz-menu-item>Team 1</li>
-          <li nz-menu-item>Team 2</li>
         </ul>
       </li>
       <li nz-menu-item><span><i nz-icon type="file"></i><span class="nav-text">File</span></span></li>
@@ -35,9 +37,9 @@
     <nz-content>
       <router-outlet></router-outlet>
     </nz-content>
-    <nz-footer style="text-align: center;">
+    <!--<nz-footer style="text-align: center;">
       FireBroK-Angular - Angular front-end for FireBrok platform - 2019 - Bastien Nicoud<br>
       Logo icon made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
-    </nz-footer>
+    </nz-footer>-->
   </nz-layout>
 </nz-layout>
