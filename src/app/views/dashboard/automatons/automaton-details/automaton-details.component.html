@@ -3,6 +3,18 @@
     <h2>Informations :</h2>
     <h3>Nom : {{ (automaton$ | async)?.name }}</h3>
     <P>{{ (automaton$ | async)?.description }}</P>
+    <button nz-button (click)="isModalVisible = true">
+      <i nz-icon type="info-circle"></i>
+      Identifiants
+    </button>
+    <nz-modal
+      [(nzVisible)]="isModalVisible"
+      nzTitle="Identifiants MQTT de l'automate"
+      (nzOnCancel)="isModalVisible = false"
+      (nzOnOk)="isModalVisible = false">
+      <p><strong>Nom :</strong> {{ (automaton$ | async)?.name }}</p>
+      <p><strong>Pass :</strong> {{ (automaton$ | async)?.id }}</p>
+    </nz-modal>
     <nz-alert
       nzType="info"
       nzMessage="Connectez votre automate :"
