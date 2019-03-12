@@ -1,15 +1,35 @@
-<div nz-row>
+<div nz-row nzGutter="16">
   <div nz-col nzSpan="16">
     <h2>Mes automates</h2>
-  </div>
-  <div nz-col nzSpan="8">
-    <h2>Automates actuellement connectés</h2>
     <nz-list
       [nzDataSource]="automatons$ | async"
-      [nzRenderItem]="a"
+      [nzRenderItem]="automaton"
       [nzItemLayout]="'horizontal'"
       nzBordered>
-      <ng-template #a let-item>
+      <ng-template #automaton let-item>
+        <nz-list-item>
+          <nz-list-item-meta
+            [nzTitle]="nzTitle"
+            [nzDescription]="'Dérnière données ' + item.updated_at.toDate().toLocaleString()">
+            <ng-template #nzTitle>
+              <a [routerLink]="['/dashboard/automatons', item.id]">
+                <i nz-icon nzType="fire" nzTheme="twotone" [nzTwotoneColor]="item.connected ? '#52c41a' : '#FF470F'"></i>
+                &nbsp;<span>{{item.name}} toto</span>
+              </a>
+            </ng-template>
+          </nz-list-item-meta>
+        </nz-list-item>
+      </ng-template>
+    </nz-list>
+  </div>
+  <div nz-col nzSpan="8">
+    <h2>Actuellement connectés</h2>
+    <nz-list
+      [nzDataSource]="connectedAutomatons$ | async"
+      [nzRenderItem]="connAutomaton"
+      [nzItemLayout]="'horizontal'"
+      nzBordered>
+      <ng-template #connAutomaton let-item>
         <nz-list-item>
           <nz-list-item-meta
             [nzTitle]="nzTitle"
