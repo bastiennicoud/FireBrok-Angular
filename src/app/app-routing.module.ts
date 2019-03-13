@@ -13,6 +13,7 @@ import { AutomatonsCreateComponent } from './views/dashboard/automatons/automato
 import { AutomatonDetailsComponent } from './views/dashboard/automatons/automaton-details/automaton-details.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RedirectLoggedUserGuard } from './guards/redirect-logged-user.guard';
+import { TopicsDetailsComponent } from './views/dashboard/automatons/topics-details/topics-details.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
           {
             path: ':id',
             component: AutomatonDetailsComponent
+          },
+          {
+            path: ':automaton_id/topics/:topic_id',
+            component: TopicsDetailsComponent
           }
         ]
       }

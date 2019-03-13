@@ -45,7 +45,7 @@
             [nzTitle]="nzTitle"
             [nzDescription]="'Dérnière données ' + item.updated_at.toDate().toLocaleString()">
             <ng-template #nzTitle>
-              <a [routerLink]="['/dashboard/automatons']">
+              <a [routerLink]="['/dashboard/automatons', route.snapshot.params.id, 'topics', item.id]">
                 <i nz-icon type="tag" theme="twotone"></i>
                 &nbsp;<span>{{item.name}}</span>
               </a>
