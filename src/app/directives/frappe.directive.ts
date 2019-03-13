@@ -14,7 +14,7 @@ export class FrappeDirective {
   @Input() type: string;
   @Input() height: number;
   // Use the same name as the directive to bind the datas directly on directive call
-  @Input('appChart') datas: any;
+  @Input('appChart') data: any;
 
   // Result of the directive processing (to be output in the element)
   @Output() chart: EventEmitter<any> = new EventEmitter<any>();
@@ -27,7 +27,11 @@ export class FrappeDirective {
     this.height = this.height || 250;
   }
 
-  ngOnChanges {
+  ngOnInit () {
+
+  }
+
+  ngOnChanges () {
     const chart = new Chart({
       parent: this.el.nativeElement
     });

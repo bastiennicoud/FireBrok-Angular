@@ -35,6 +35,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { RedirectLoggedUserGuard } from './guards/redirect-logged-user.guard';
 import { FrappeDirective } from './directives/frappe.directive';
+import { FrappeGraphComponent } from './components/frappe-graph/frappe-graph.component';
 
 registerLocaleData(en);
 
@@ -53,7 +54,8 @@ registerLocaleData(en);
     AutomatonsHomeComponent,
     AutomatonsCreateComponent,
     AutomatonDetailsComponent,
-    FrappeDirective
+    FrappeDirective,
+    FrappeGraphComponent
   ],
   imports: [
     BrowserModule,
