@@ -35,7 +35,9 @@
             "styles": [
               "src/styles.less"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/frappe-charts/dist/frappe-charts.min.iife.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

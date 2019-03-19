@@ -1,11 +1,16 @@
 <div nz-row>
   <div nz-col>
-    <h1>Topic : <i>tutu</i></h1>
+    <h1>Topic : <i>{{ (topic$ | async)?.name }}</i></h1>
+    <div>
+      <nz-tag [nzColor]="'green'">Créé le : {{ (topic$ | async)?.created_at.toDate().toLocaleString() }}</nz-tag>
+      <nz-tag [nzColor]="'gold'">Dérniéres données le : {{ (topic$ | async)?.updated_at.toDate().toLocaleString() }}</nz-tag>
+    </div>
   </div>
 </div>
 <div nz-row nzGutter="16">
   <div nz-col nzSpan="14">
     <h2>Punchcard</h2>
+    <app-frappe-graph type="line" [data]="heatMapDatas"></app-frappe-graph>
   </div>
   <div nz-col nzSpan="10">
     <h2>Données</h2>
