@@ -46,9 +46,17 @@ export class TopicsDetailsComponent implements OnInit {
     // Get topic flux
     this.flux$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
-        return this.firestore
-          .collection(`/automatons/${params.get('automaton_id')}/topics/${params.get('topic_id')}/flux`)
-          .valueChanges();
+        return this.firestore.collection(
+          `/automatons/${params.get('automaton_id')}/topics/${params.get('topic_id')}/flux`,
+          ref => ref.orderBy('timestamp', 'desc').limit(40)
+        ).valueChanges().pipe(map((flux: Array<any>) => {
+          return {
+            labels: flux.map(e => e.timestamp.toDate().toLocaleDateString()),
+            datasets: [
+              { values: flux.map(e => e.message )}
+            ]
+          };
+        }));
       })
     );
   }

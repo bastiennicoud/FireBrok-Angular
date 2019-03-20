@@ -10,7 +10,7 @@
 <div nz-row nzGutter="16">
   <div nz-col nzSpan="14">
     <h2>Punchcard</h2>
-    <app-frappe-graph type="line" [data]="heatMapDatas"></app-frappe-graph>
+    <app-frappe-graph type="line" [data$]="flux$"></app-frappe-graph>
   </div>
   <div nz-col nzSpan="10">
     <h2>Données</h2>
