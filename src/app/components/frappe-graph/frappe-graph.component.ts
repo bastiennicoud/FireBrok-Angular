@@ -41,7 +41,10 @@ export class FrappeGraphComponent implements OnInit {
           data,
           type: this.type,
           height: this.height,
-          colors: this.colors
+          colors: this.colors,
+          axisOptions: {
+            xIsSeries: 1
+          }
         });
     });
     // Next stream elements, update the graph representation with new datas
