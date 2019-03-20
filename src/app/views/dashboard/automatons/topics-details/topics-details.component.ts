@@ -13,22 +13,13 @@ export class TopicsDetailsComponent implements OnInit {
 
   topic$: Observable<any>;
   flux$: Observable<any>;
-
-  heatMapDatas: object;
+  graphFlux$: Observable<any>;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private firestore: AngularFirestore
-  ) {
-    // Prepare graph dates
-    this.heatMapDatas = {
-      labels: ['tutu', 'toto'],
-      datasets: [
-        { values: [10, 30] }
-      ]
-    };
-  }
+  ) { }
 
   ngOnInit() {
     // Get topic details observable
@@ -43,20 +34,26 @@ export class TopicsDetailsComponent implements OnInit {
         );
       })
     );
-    // Get topic flux
+    // Get topic data flux
     this.flux$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
+        // Get the corresponding flux collection
         return this.firestore.collection(
           `/automatons/${params.get('automaton_id')}/topics/${params.get('topic_id')}/flux`,
           ref => ref.orderBy('timestamp', 'desc').limit(40)
-        ).valueChanges().pipe(map((flux: Array<any>) => {
-          return {
-            labels: flux.map(e => e.timestamp.toDate().toLocaleDateString()),
-            datasets: [
-              { values: flux.map(e => e.message )}
-            ]
-          };
-        }));
+        ).valueChanges()
+      })
+    );
+    // Generate one observable for the graph data
+    this.graphFlux$ = this.flux$.pipe(
+      // Map the observable stream to format the data for the graph
+      map((flux: Array<any>) => {
+        return {
+          labels: flux.map(e => e.timestamp.toDate().toLocaleDateString()),
+          datasets: [
+            { values: flux.map(e => e.message )}
+          ]
+        };
       })
     );
   }

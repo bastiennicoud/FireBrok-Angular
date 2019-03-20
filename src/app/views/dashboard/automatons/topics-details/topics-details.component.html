@@ -9,10 +9,25 @@
 </div>
 <div nz-row nzGutter="16">
   <div nz-col nzSpan="14">
-    <h2>Punchcard</h2>
-    <app-frappe-graph type="line" [data$]="flux$"></app-frappe-graph>
+    <h2>Dérnières données</h2>
+    <app-frappe-graph type="line" [data$]="graphFlux$"></app-frappe-graph>
   </div>
   <div nz-col nzSpan="10">
     <h2>Données</h2>
+    <nz-list
+      [nzDataSource]="flux$ | async"
+      [nzRenderItem]="a"
+      [nzItemLayout]="'horizontal'"
+      nzBordered>
+      <ng-template #a let-item>
+        <nz-list-item>
+          <nz-list-item-meta [nzTitle]="nzTitle">
+            <ng-template #nzTitle>
+              {{item.message}} - le {{ item.timestamp.toDate().toLocaleString() }}
+            </ng-template>
+          </nz-list-item-meta>
+        </nz-list-item>
+      </ng-template>
+    </nz-list>
   </div>
 </div>
