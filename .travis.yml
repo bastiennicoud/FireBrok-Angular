@@ -1,0 +1,32 @@
+language: node_js
+node_js:
+  - 'node'
+
+dist: trusty
+sudo: false
+
+branches:
+  only:
+  - master
+
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  - echo $FIREBASE_KEYS
+  - echo $FIREBASE_KEYS > src/environments/firebase.ts
+
+script:
+  - npm run lint
+  - npm run build
+  - cp dist/FireBrok-Angular/index.html dist/FireBrok-Angular/404.html
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  local-dir: dist/FireBrok-Angular
+  on:
+    branch: master
