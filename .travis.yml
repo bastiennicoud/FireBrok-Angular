@@ -14,6 +14,7 @@ cache:
     - node_modules
 
 before_install:
+  - echo $FIREBASE_KEYS
   - echo $FIREBASE_KEYS > src/environments/firebase.ts
 
 script:
