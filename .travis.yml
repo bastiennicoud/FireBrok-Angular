@@ -1,0 +1,26 @@
+language: node_js
+
+dist: trusty
+sudo: false
+
+branches:
+  only:
+  - master
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm run lint
+  - npm run build
+  - cp dist/FireBrok-Angular/index.html dist/FireBrok-Angular/404.html
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  local-dir: dist/FireBrok-Angular
+  on:
+    branch: master
