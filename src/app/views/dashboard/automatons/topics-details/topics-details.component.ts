@@ -41,7 +41,7 @@ export class TopicsDetailsComponent implements OnInit {
         return this.firestore.collection(
           `/automatons/${params.get('automaton_id')}/topics/${params.get('topic_id')}/flux`,
           ref => ref.orderBy('timestamp', 'desc').limit(40)
-        ).valueChanges()
+        ).valueChanges();
       })
     );
     // Generate one observable for the graph data
