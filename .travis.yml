@@ -14,7 +14,7 @@ cache:
     - node_modules
 
 before_install:
-  - echo -e "$FIREBASE_KEYS" > src/environments/firebase.ts
+  - echo $FIREBASE_KEYS > src/environments/firebase.ts
 
 script:
   - npm run lint
