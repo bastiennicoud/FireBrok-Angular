@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { map, take, tap } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,6 @@ export class RedirectLoggedUserGuard implements CanActivate {
     if (this.auth.authenticated) {
       console.log('user authenticated');
       this.router.navigate(['/dashboard']);
-      return false;
     }
 
     // TODO not working for now, routing not performed when user not logged
@@ -29,7 +28,7 @@ export class RedirectLoggedUserGuard implements CanActivate {
     return this.auth.authenticatedUser.pipe(
       map(user => !!user),
       take(1),
-      tap(allowed => {
+      map(allowed => {
         console.log('From redirect pipe ' + allowed);
         if (allowed) {
           console.log('Authenticated, redirect to dashboard');
