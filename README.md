@@ -6,6 +6,10 @@
 
 Docs available in the [docs folder](./docs).
 
+## Changelog - v0.2.1
+
+- Redirect logged in users guard now working, replaced tap to map operator in the observable pipe.
+
 ## Installation for dev
 
 Prerequisites :
