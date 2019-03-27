@@ -7,6 +7,10 @@
       <i nz-icon type="info-circle"></i>
       Identifiants
     </button>
+    <button nz-button nzType="primary" [routerLink]="['/dashboard/automatons', route.snapshot.params.id, 'edit']">
+      <i nz-icon type="info-circle"></i>
+      Modifier
+    </button>
     <nz-modal
       [(nzVisible)]="isModalVisible"
       nzTitle="Identifiants MQTT de l'automate"
@@ -26,12 +30,6 @@
     <div nz-row nzType="flex" nzJustify="space-between">
       <div nz-col>
         <h2>Topics de l'automate</h2>
-      </div>
-      <div nz-col>
-        <button nz-button nzType="primary">
-          <i nz-icon type="plus-circle"></i>
-          Ajouter
-        </button>
       </div>
     </div>
     <nz-list
