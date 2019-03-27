@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { map, take, tap } from 'rxjs/operators';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private message: NzMessageService
   ) {}
 
   canActivate(
@@ -26,8 +28,8 @@ export class AuthGuard implements CanActivate {
       take(1),
       tap(allowed => {
         if (!allowed) {
-          console.warn('Access denied, auth required.');
           this.router.navigate(['/log-in']);
+          this.message.warning('Connectez vous pour accéder a ce contenu.');
         }
       })
     );
