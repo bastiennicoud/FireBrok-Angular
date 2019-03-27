@@ -36,6 +36,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { RedirectLoggedUserGuard } from './guards/redirect-logged-user.guard';
 import { FrappeGraphComponent } from './components/frappe-graph/frappe-graph.component';
 import { TopicsDetailsComponent } from './views/dashboard/automatons/topics-details/topics-details.component';
+import { AutomatonEditionComponent } from './views/dashboard/automatons/automaton-edition/automaton-edition.component';
 
 registerLocaleData(en);
 
@@ -55,7 +56,8 @@ registerLocaleData(en);
     AutomatonsCreateComponent,
     AutomatonDetailsComponent,
     FrappeGraphComponent,
-    TopicsDetailsComponent
+    TopicsDetailsComponent,
+    AutomatonEditionComponent
   ],
   imports: [
     BrowserModule,
