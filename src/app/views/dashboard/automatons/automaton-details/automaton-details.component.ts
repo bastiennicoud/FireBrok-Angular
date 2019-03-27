@@ -16,7 +16,7 @@ export class AutomatonDetailsComponent implements OnInit {
   topics$: Observable<any>;
 
   constructor(
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private router: Router,
     private firestore: AngularFirestore
   ) { }
