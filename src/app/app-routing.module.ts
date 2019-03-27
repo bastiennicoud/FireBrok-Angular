@@ -14,6 +14,7 @@ import { AutomatonDetailsComponent } from './views/dashboard/automatons/automato
 import { AuthGuard } from './guards/auth.guard';
 import { RedirectLoggedUserGuard } from './guards/redirect-logged-user.guard';
 import { TopicsDetailsComponent } from './views/dashboard/automatons/topics-details/topics-details.component';
+import { AutomatonEditionComponent } from './views/dashboard/automatons/automaton-edition/automaton-edition.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,10 @@ const routes: Routes = [
           {
             path: ':id',
             component: AutomatonDetailsComponent
+          },
+          {
+            path: ':id/edit',
+            component: AutomatonEditionComponent
           },
           {
             path: ':automaton_id/topics/:topic_id',

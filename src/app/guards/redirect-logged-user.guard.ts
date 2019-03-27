@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { map, take } from 'rxjs/operators';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class RedirectLoggedUserGuard implements CanActivate {
 
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private message: NzMessageService
   ) { }
 
   canActivate(
@@ -19,11 +21,10 @@ export class RedirectLoggedUserGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.auth.authenticated) {
-      console.log('user authenticated');
       this.router.navigate(['/dashboard']);
+      this.message.success('Vous êtes déja connecté, bienvenue.');
     }
 
-    // TODO not working for now, routing not performed when user not logged
     // Wait for first load situations
     return this.auth.authenticatedUser.pipe(
       map(user => !!user),
@@ -31,8 +32,8 @@ export class RedirectLoggedUserGuard implements CanActivate {
       map(allowed => {
         console.log('From redirect pipe ' + allowed);
         if (allowed) {
-          console.log('Authenticated, redirect to dashboard');
           this.router.navigate(['/dashboard']);
+          this.message.success('Vous êtes déja connecté, bienvenue.');
           return false;
         }
         return true;
