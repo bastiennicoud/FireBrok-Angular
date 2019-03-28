@@ -30,13 +30,18 @@ import { AutomatonsComponent } from './views/dashboard/automatons/automatons/aut
 import { AutomatonsHomeComponent } from './views/dashboard/automatons/automatons-home/automatons-home.component';
 import { AutomatonsCreateComponent } from './views/dashboard/automatons/automatons-create/automatons-create.component';
 import { AutomatonDetailsComponent } from './views/dashboard/automatons/automaton-details/automaton-details.component';
-import { AuthService } from './services/auth.service';
-import { AuthGuard } from './guards/auth.guard';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { RedirectLoggedUserGuard } from './guards/redirect-logged-user.guard';
 import { FrappeGraphComponent } from './components/frappe-graph/frappe-graph.component';
 import { TopicsDetailsComponent } from './views/dashboard/automatons/topics-details/topics-details.component';
 import { AutomatonEditionComponent } from './views/dashboard/automatons/automaton-edition/automaton-edition.component';
+
+// Services
+import { AutomatonsService } from './services/data/automatons.service';
+import { AuthService } from './services/auth.service';
+
+// Guards
+import { AuthGuard } from './guards/auth.guard';
+import { RedirectLoggedUserGuard } from './guards/redirect-logged-user.guard';
 
 registerLocaleData(en);
 
@@ -77,6 +82,7 @@ registerLocaleData(en);
     { provide: NZ_I18N, useValue: en_GB },
     { provide: FunctionsRegionToken, useValue: 'europe-west1' },
     AuthService,
+    AutomatonsService,
     AuthGuard,
     RedirectLoggedUserGuard
   ],

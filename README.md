@@ -6,10 +6,9 @@
 
 Docs available in the [docs folder](./docs).
 
-## Changelog - v0.2.2
+## Changelog - v0.2.3
 
-- Add popup messages for redirection guards
-- Add automatons edition form
+- New service for automatons managment.
 
 ## Installation for dev
 
