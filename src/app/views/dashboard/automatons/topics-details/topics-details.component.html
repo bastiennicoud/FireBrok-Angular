@@ -10,9 +10,18 @@
 <div nz-row nzGutter="16">
   <div nz-col nzSpan="14">
     <h2>Dérnières données</h2>
+    <!-- Display the graph -->
     <app-frappe-graph type="line" [data$]="graphFlux$"></app-frappe-graph>
+    <!-- Slider to select graph range -->
+    <nz-slider
+      [nzMin]="5"
+      [nzMax]="50"
+      [nzStep]="5"
+      [(ngModel)]="sliderValue"
+      (ngModelChange)="onChange($event)"
+    ></nz-slider>
   </div>
-  <div nz-col nzSpan="10">
+  <div nz-col nzSpan="10" style="max-height: 70vh; overflow: scroll;">
     <h2>Données</h2>
     <nz-list
       [nzDataSource]="flux$ | async"
@@ -23,7 +32,7 @@
         <nz-list-item>
           <nz-list-item-meta [nzTitle]="nzTitle">
             <ng-template #nzTitle>
-              {{item.message}} - le {{ item.timestamp.toDate().toLocaleString() }}
+              <strong>{{item.message}}</strong> - le {{ item.timestamp.toDate().toLocaleString() }}
             </ng-template>
           </nz-list-item-meta>
         </nz-list-item>
