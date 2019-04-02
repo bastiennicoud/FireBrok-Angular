@@ -11,8 +11,9 @@
   <div nz-col nzSpan="14">
     <h2>Dérnières données</h2>
     <!-- Display the graph -->
-    <app-frappe-graph type="line" [data$]="graphFlux$"></app-frappe-graph>
+    <app-frappe-graph type="axis-mixed" [data$]="graphFlux$"></app-frappe-graph>
     <!-- Slider to select graph range -->
+    <p>Modifier la quantité de données affichées :</p>
     <nz-slider
       [nzMin]="5"
       [nzMax]="50"

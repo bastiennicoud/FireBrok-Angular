@@ -65,7 +65,10 @@ export class TopicsDetailsComponent implements OnInit {
         return {
           labels: flux.map(e => e.timestamp.toDate().toLocaleDateString()),
           datasets: [
-            { values: flux.map(e => e.message )}
+            {
+              values: flux.map(e => e.message ),
+              chartType: 'line'
+            }
           ]
         };
       })
