@@ -6,10 +6,11 @@
 
 Docs available in the [docs folder](./docs).
 
-## Changelog - v0.2.2
+## Changelog - v0.2.4
 
-- Add popup messages for redirection guards
-- Add automatons edition form
+- Add graph dynamic range regeneration
+- Add graph type change
+- Add dashboard home infos
 
 ## Installation for dev
 
