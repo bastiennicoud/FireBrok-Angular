@@ -10,9 +10,25 @@
 <div nz-row nzGutter="16">
   <div nz-col nzSpan="14">
     <h2>Dérnières données</h2>
-    <app-frappe-graph type="line" [data$]="graphFlux$"></app-frappe-graph>
+    <!-- Display the graph -->
+    <app-frappe-graph *ngIf="graphType == 'line'" type="line" [data$]="graphFlux$"></app-frappe-graph>
+    <app-frappe-graph *ngIf="graphType == 'bar'" type="bar" [data$]="graphFlux$"></app-frappe-graph>
+    <p style="margin-top: 12px">Modifier le type de graphique</p>
+    <nz-radio-group [(ngModel)]="graphType">
+      <label nz-radio-button nzValue="line"><span>Lignes</span></label>
+      <label nz-radio-button nzValue="bar"><span>Bares</span></label>
+    </nz-radio-group>
+    <!-- Slider to select graph range -->
+    <p>Modifier la quantité de données affichées :</p>
+    <nz-slider
+      [nzMin]="5"
+      [nzMax]="50"
+      [nzStep]="5"
+      [(ngModel)]="sliderValue"
+      (ngModelChange)="onChange($event)"
+    ></nz-slider>
   </div>
-  <div nz-col nzSpan="10">
+  <div nz-col nzSpan="10" style="max-height: 70vh; overflow: scroll;">
     <h2>Données</h2>
     <nz-list
       [nzDataSource]="flux$ | async"
@@ -23,7 +39,7 @@
         <nz-list-item>
           <nz-list-item-meta [nzTitle]="nzTitle">
             <ng-template #nzTitle>
-              {{item.message}} - le {{ item.timestamp.toDate().toLocaleString() }}
+              <strong>{{item.message}}</strong> - le {{ item.timestamp.toDate().toLocaleString() }}
             </ng-template>
           </nz-list-item-meta>
         </nz-list-item>

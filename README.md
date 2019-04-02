@@ -6,9 +6,11 @@
 
 Docs available in the [docs folder](./docs).
 
-## Changelog - v0.2.3
+## Changelog - v0.2.4
 
-- New service for automatons managment.
+- Add graph dynamic range regeneration
+- Add graph type change
+- Add dashboard home infos
 
 ## Installation for dev
 

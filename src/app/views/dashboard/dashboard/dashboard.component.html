@@ -4,6 +4,12 @@
       <img class="logo" [src]="isCollapsed ? 'assets/logo.svg' : 'assets/logo_text.svg'" alt="FireBrok">
     </div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+      <li routerLink="/dashboard" nz-menu-item nz-tooltip nzPlacement="right" [nzTitle]="isCollapsed ? 'Home' : ''">
+        <span title>
+          <i nz-icon type="home"></i>
+          <span>Home</span>
+        </span>
+      </li>
       <li nz-submenu>
         <span title>
           <i nz-icon type="user"></i>
@@ -23,12 +29,11 @@
           <li nz-menu-item><a routerLink="/dashboard/automatons/create">Enregistrer un automate</a></li>
         </ul>
       </li>
-      <li nz-menu-item><span><i nz-icon type="file"></i><span class="nav-text">File</span></span></li>
     </ul>
   </nz-sider>
   <nz-layout style="height: 100vh">
     <nz-header class="custom-header" nz-row nzType="flex" nzJustify="space-between">
-      <h1 style="color: #d9d9d9">Dashboard</h1>
+      <h1 style="color: #d9d9d9" routerLink="/dashboard">Dashboard</h1>
       <button nz-col nz-button nzType="danger" class="menu-item" (click)="auth.signOut()">
         <i nz-icon type="logout"></i>
         Log out

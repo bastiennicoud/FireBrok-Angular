@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map, switchMap } from 'rxjs/operators';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
@@ -11,15 +11,28 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class TopicsDetailsComponent implements OnInit {
 
+  // Data observables
   topic$: Observable<any>;
   flux$: Observable<any>;
   graphFlux$: Observable<any>;
+
+  // Slider value
+  sliderValue: number;
+  querySize$: BehaviorSubject<number>;
+
+  // Graph type
+  graphType: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private firestore: AngularFirestore
-  ) { }
+  ) {
+    // Create a rx subject to dynamically update the topic query when size change
+    this.sliderValue = 50;
+    this.querySize$ = new BehaviorSubject(50);
+    this.graphType = 'line';
+  }
 
   ngOnInit() {
     // Get topic details observable
@@ -34,13 +47,18 @@ export class TopicsDetailsComponent implements OnInit {
         );
       })
     );
-    // Get topic data flux
-    this.flux$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => {
-        // Get the corresponding flux collection
+    // Get topic data flux (generate a dynamic query with the switchmap operator)
+    this.flux$ = combineLatest(
+      this.route.paramMap,
+      this.querySize$
+    ).pipe(
+      switchMap(([params, size]) => {
+        // Return the firestore reference observable
         return this.firestore.collection(
           `/automatons/${params.get('automaton_id')}/topics/${params.get('topic_id')}/flux`,
-          ref => ref.orderBy('timestamp', 'desc').limit(40)
+          ref => ref
+            .orderBy('timestamp', 'desc')
+            .limit(size ? size : 50)
         ).valueChanges();
       })
     );
@@ -51,11 +69,17 @@ export class TopicsDetailsComponent implements OnInit {
         return {
           labels: flux.map(e => e.timestamp.toDate().toLocaleDateString()),
           datasets: [
-            { values: flux.map(e => e.message )}
+            {
+              values: flux.map(e => e.message )
+            }
           ]
         };
       })
     );
+  }
+
+  onChange(value: number): void {
+    this.querySize$.next(value);
   }
 
 }

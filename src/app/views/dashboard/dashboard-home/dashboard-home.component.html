@@ -1,3 +1,55 @@
-<p>
-  dashboard-home works!
-</p>
+<div class="automatons-container">
+  <div nz-row nzGutter="16">
+    <div nz-col nzSpan="8">
+      <h2>Bienvenue : {{ (auth.authenticatedUser | async)?.email }}</h2>
+    </div>
+    <!-- Display last created automatons -->
+    <div nz-col nzSpan="8">
+      <h2>Dernières créations</h2>
+      <nz-list
+        [nzDataSource]="lastCreatedAutomatons$ | async"
+        [nzRenderItem]="automaton"
+        [nzItemLayout]="'horizontal'"
+        nzBordered>
+        <ng-template #automaton let-item>
+          <nz-list-item>
+            <nz-list-item-meta
+              [nzTitle]="nzTitle"
+              [nzDescription]="'Dérnière données ' + item.updated_at.toDate().toLocaleString()">
+              <ng-template #nzTitle>
+                <a [routerLink]="['/dashboard/automatons', item.id]">
+                  <i nz-icon nzType="fire" nzTheme="twotone" [nzTwotoneColor]="item.connected ? '#52c41a' : '#FF470F'"></i>
+                  &nbsp;<span>{{item.name}}</span>
+                </a>
+              </ng-template>
+            </nz-list-item-meta>
+          </nz-list-item>
+        </ng-template>
+      </nz-list>
+    </div>
+    <!-- Display user automatons -->
+    <div nz-col nzSpan="8">
+      <h2>Actuellement connectés</h2>
+      <nz-list
+        [nzDataSource]="connectedAutomatons$ | async"
+        [nzRenderItem]="connAutomaton"
+        [nzItemLayout]="'horizontal'"
+        nzBordered>
+        <ng-template #connAutomaton let-item>
+          <nz-list-item>
+            <nz-list-item-meta
+              [nzTitle]="nzTitle"
+              [nzDescription]="'Dérnière données ' + item.updated_at.toDate().toLocaleString()">
+              <ng-template #nzTitle>
+                <a [routerLink]="['/dashboard/automatons', item.id]">
+                  <i nz-icon type="fire" theme="twotone" [twoToneColor]="'#52c41a'"></i>
+                  &nbsp;<span>{{item.name}}</span>
+                </a>
+              </ng-template>
+            </nz-list-item-meta>
+          </nz-list-item>
+        </ng-template>
+      </nz-list>
+    </div>
+  </div>
+</div>
