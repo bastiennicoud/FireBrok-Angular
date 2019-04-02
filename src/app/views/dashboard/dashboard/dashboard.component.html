@@ -4,10 +4,10 @@
       <img class="logo" [src]="isCollapsed ? 'assets/logo.svg' : 'assets/logo_text.svg'" alt="FireBrok">
     </div>
     <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
-      <li nz-menu-item routerLink="/dashboard">
+      <li routerLink="/dashboard" nz-menu-item nz-tooltip nzPlacement="right" [nzTitle]="isCollapsed ? 'Home' : ''">
         <span title>
           <i nz-icon type="home"></i>
-          Home
+          <span>Home</span>
         </span>
       </li>
       <li nz-submenu>
