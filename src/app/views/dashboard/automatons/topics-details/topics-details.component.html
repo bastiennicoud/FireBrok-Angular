@@ -11,7 +11,13 @@
   <div nz-col nzSpan="14">
     <h2>Dérnières données</h2>
     <!-- Display the graph -->
-    <app-frappe-graph type="axis-mixed" [data$]="graphFlux$"></app-frappe-graph>
+    <app-frappe-graph *ngIf="graphType == 'line'" type="line" [data$]="graphFlux$"></app-frappe-graph>
+    <app-frappe-graph *ngIf="graphType == 'bar'" type="bar" [data$]="graphFlux$"></app-frappe-graph>
+    <p style="margin-top: 12px">Modifier le type de graphique</p>
+    <nz-radio-group [(ngModel)]="graphType">
+      <label nz-radio-button nzValue="line"><span>Lignes</span></label>
+      <label nz-radio-button nzValue="bar"><span>Bares</span></label>
+    </nz-radio-group>
     <!-- Slider to select graph range -->
     <p>Modifier la quantité de données affichées :</p>
     <nz-slider

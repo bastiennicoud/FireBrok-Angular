@@ -53,4 +53,8 @@ export class FrappeGraphComponent implements OnInit {
     });
   }
 
+  saveSvg() {
+    this.chart.export();
+  }
+
 }

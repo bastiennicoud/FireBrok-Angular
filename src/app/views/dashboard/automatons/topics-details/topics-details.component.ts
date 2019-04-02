@@ -20,6 +20,9 @@ export class TopicsDetailsComponent implements OnInit {
   sliderValue: number;
   querySize$: BehaviorSubject<number>;
 
+  // Graph type
+  graphType: string;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -28,6 +31,7 @@ export class TopicsDetailsComponent implements OnInit {
     // Create a rx subject to dynamically update the topic query when size change
     this.sliderValue = 50;
     this.querySize$ = new BehaviorSubject(50);
+    this.graphType = 'line';
   }
 
   ngOnInit() {
@@ -66,8 +70,7 @@ export class TopicsDetailsComponent implements OnInit {
           labels: flux.map(e => e.timestamp.toDate().toLocaleDateString()),
           datasets: [
             {
-              values: flux.map(e => e.message ),
-              chartType: 'line'
+              values: flux.map(e => e.message )
             }
           ]
         };
