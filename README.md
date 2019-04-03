@@ -33,3 +33,7 @@ npm i
 # Launch the dev server
 ng serve
 ```
+
+## Setup firebase connexion
+
+To use the firebase sdk, the app requires the firebase key. You need to fill your firebase key in the `src/environments/firebase.ts` file. Just use the `firebase.example.ts` to see the file layout. Be careful, this file must not be pushed on a public git repository.
