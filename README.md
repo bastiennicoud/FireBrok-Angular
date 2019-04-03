@@ -6,11 +6,14 @@
 
 Docs available in the [docs folder](./docs).
 
-## Changelog - v0.2.4
+## Changelog - v1.0.0
 
-- Add graph dynamic range regeneration
-- Add graph type change
-- Add dashboard home infos
+- Create and show automatons
+- Reactive update of automaton state
+- Show automaton topics and data streams
+- Create graph for a dedicated automaton flux
+- Graph reactive updates
+- Authentication
 
 ## Installation for dev
 
