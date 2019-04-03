@@ -1,8 +1,8 @@
-# FireBrok-Angular
+# [FireBrok-Angular](https://bastiennicoud.github.io/FireBrok-Angular/)
 
 [![Build Status](https://travis-ci.com/bastiennicoud/FireBrok-Angular.svg?branch=master)](https://travis-ci.com/bastiennicoud/FireBrok-Angular)
 
-> Dashboard app developed during the PRW3 module with [Angular](https://angular.io)
+> Dashboard app for [firebrok](https://github.com/CPNV-ES/FireBrok) developed during the PRW3 module with [Angular](https://angular.io)
 
 Docs available in the [docs folder](./docs).
 
