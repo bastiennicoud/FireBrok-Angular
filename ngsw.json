@@ -13,7 +13,7 @@
         "/FireBrok-Angular/polyfills.407a467dedb63cfdd103.js",
         "/FireBrok-Angular/runtime.a5dd35324ddfd942bef1.js",
         "/FireBrok-Angular/scripts.292c648d97f6ed9d9993.js",
-        "/FireBrok-Angular/styles.e3e8640547edaa98015c.css"
+        "/FireBrok-Angular/styles.aec2716bb8b117112180.css"
       ],
       "patterns": []
     },
@@ -983,7 +983,7 @@
     "/FireBrok-Angular/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/FireBrok-Angular/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/FireBrok-Angular/assets/logo.svg": "b4fbf8ba99786183dcee3101e2115fe13acc859b",
-    "/FireBrok-Angular/assets/logo_text.svg": "1c3f30b6c9f6fff2149107b8717597db9195c518",
+    "/FireBrok-Angular/assets/logo_text.svg": "8777f13eafd81e8088cae3484df95012294ec63f",
     "/FireBrok-Angular/assets/outline/account-book.svg": "e97d82a565635e2200f19ab8aac7d8b71d77c79d",
     "/FireBrok-Angular/assets/outline/alert.svg": "02a5d6fbaa8a18d4b6f84252a74e3ae4d474a946",
     "/FireBrok-Angular/assets/outline/alibaba.svg": "78ff412cb87f3b8d90ea8f4b29d3b3a6905d0d9d",
@@ -1493,12 +1493,12 @@
     "/FireBrok-Angular/assets/twotone/wallet.svg": "450239fff59398e7314a5d7b1201a0ce1699ec9f",
     "/FireBrok-Angular/assets/twotone/warning.svg": "ee982b671787446c8b9fc65d3d23b88943dc52ac",
     "/FireBrok-Angular/es2015-polyfills.358ed1827c991dd2afb0.js": "b7a81c61d32b0b12737f0c13f45973ba391cd7f9",
-    "/FireBrok-Angular/index.html": "30e9d881259af9854d815d8f1442e05becbb0c84",
+    "/FireBrok-Angular/index.html": "7b7c7764c036e4eb9b80b501649e718918d470cc",
     "/FireBrok-Angular/main.9a788da5e5e86be13958.js": "f5213157dfe54e94cc0a8511614c4ce3c71c84ec",
     "/FireBrok-Angular/polyfills.407a467dedb63cfdd103.js": "ffa449995bf2eba2ccd0a002417214f7eb75e7b5",
     "/FireBrok-Angular/runtime.a5dd35324ddfd942bef1.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
     "/FireBrok-Angular/scripts.292c648d97f6ed9d9993.js": "aadb0c77ab675abd3edf17d096eef985f1cbe5c3",
-    "/FireBrok-Angular/styles.e3e8640547edaa98015c.css": "097e571cd6c52814557d16a51daad4e5cd9c2b13"
+    "/FireBrok-Angular/styles.aec2716bb8b117112180.css": "f49b4292aa8b5e9511007ca593a88bc3b69775ee"
   },
   "navigationUrls": [
     {
