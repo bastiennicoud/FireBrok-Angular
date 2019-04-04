@@ -6,7 +6,7 @@
 
 Docs available in the [docs folder](./docs).
 
-## Changelog - v1.0.0
+## Changelog - v1.0.1
 
 - Create and show automatons
 - Reactive update of automaton state
